@@ -1,4 +1,5 @@
-import { Switch } from 'react-router-dom/cjs/react-router-dom.min';
+import { Switch, Route } from 'react-router-dom';
+import PrivateRoute from './components/PrivateRoute';
 import Auth from './views/Auth';
 import Dashboard from './views/Dashboard';
 import Home from './views/Home';
@@ -9,12 +10,13 @@ export default function App() {
       <Route path="/login">
         <Auth />
       </Route>
-      <Route path="/dashboard">
+      <PrivateRoute path="/dashboard">
         <Dashboard />
-      </Route>
+      </PrivateRoute>
       <Route path="/">
         <Home />
       </Route>
     </Switch>
   );
 }
+// wrapping everything in UseProvider so everything in App has access to the state
