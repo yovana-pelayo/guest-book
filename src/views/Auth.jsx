@@ -10,10 +10,10 @@ export default function Auth() {
   const history = useHistory();
   const { login } = useUser();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     try {
       e.preventDefault();
-      login(email, password);
+      await login(email, password);
 
       const url = location.state.from ? location.state.from.pathname : '/';
       history.replace(url);

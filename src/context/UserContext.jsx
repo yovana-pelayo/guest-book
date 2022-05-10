@@ -1,15 +1,16 @@
 import { createContext, useContext, useState } from 'react';
+import { getUser, signInUser } from '../services/user';
 
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-  const [user, setUser] = useState({ email: null });
+  const currentUser = getUser();
+  const [user, setUser] = useState(currentUser || { email: null });
 
-  const login = (email, password) => {
-    if (email === 'yovi@testing.com' && password === 'secret') {
-      setUser({ email: 'yovi@testing.com' });
-    } else {
-      throw new Error('invalid login or email');
+  const login = async (email, password) => {
+    const authUser = await signInUser({ email, password });
+    if (authUser) {
+      setUser(authUser);
     }
   };
   const logout = () => {
