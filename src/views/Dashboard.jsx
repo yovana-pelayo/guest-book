@@ -12,6 +12,8 @@ export default function Dashboard() {
       .then((results) => setEntries(results))
       .finally(() => setLoading(false));
   }, []);
+
+  // to make shorter you can also do .then(setEntries)
   return (
     <>
       <h1>Dashboard</h1>

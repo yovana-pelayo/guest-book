@@ -33,6 +33,7 @@ export default function Auth() {
         <input
           type="password"
           value={password}
+          placeholder="password"
           onChange={(e) => setPassword(e.target.value)}
         />
         <button type="submit">Sign in</button>
