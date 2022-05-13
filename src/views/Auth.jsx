@@ -27,9 +27,8 @@ export default function Auth() {
   };
 
   const handleSignUp = async (e) => {
+    e.preventDefault();
     try {
-      e.preventDefault();
-
       await signUp(newEmail, newPassword);
       const url = location.state ? location.state.from.pathname : '/';
       history.replace(url);
