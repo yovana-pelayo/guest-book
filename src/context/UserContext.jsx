@@ -6,6 +6,7 @@ export const UserContext = createContext();
 export const UserProvider = ({ children }) => {
   const currentUser = getUser();
   const [user, setUser] = useState(currentUser || { email: null });
+  // const [newUser, setNewUser] = useState();
 
   const login = async (email, password) => {
     const authUser = await signInUser({ email, password });
@@ -13,6 +14,12 @@ export const UserProvider = ({ children }) => {
       setUser(authUser);
     }
   };
+  // const signUp = async (email, password) => {
+  //   const registeredUser = await signUpUser({ email, password });
+  //   if (registerUser) {
+  //     setUser(registeredUser);
+  //   }
+  // };
   const logout = () => {
     setUser({ email: null });
   };

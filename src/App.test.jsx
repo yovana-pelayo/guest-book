@@ -78,12 +78,5 @@ describe('<App/>', () => {
     await screen.findByRole('heading', {
       name: /dashboard/i,
     });
-      const entry = await screen.findByText('Hello World');
-      expect(entry).toBeInTheDocument()
-    });
   });
 });
-
-// name is just a given key?? look up where name is coming from. Pretty sure its just a thing thats given in the react library testing  { name: /view dashboard/i });
-
-// rejex is data type in javascript... look it up
