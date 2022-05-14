@@ -6,20 +6,29 @@ export const UserContext = createContext();
 export const UserProvider = ({ children }) => {
   const currentUser = getUser();
   const [user, setUser] = useState(currentUser || { email: null });
+  const [newEntry, setNewEntry] = useState('');
   // const [newUser, setNewUser] = useState();
 
   const login = async (email, password) => {
     const authUser = await signInUser({ email, password });
+    if (authUser) {
+      setUser(authUser);
+    }
   };
   const signUp = async (email, password) => {
     const registerUser = await signUpUser({ email, password });
+    if (registerUser) {
+      setUser(registerUser);
+    }
   };
   const logout = () => {
     signOutUser();
     setUser({ email: null });
   };
   return (
-    <UserContext.Provider value={{ user, login, logout, signUp }}>
+    <UserContext.Provider
+      value={{ user, login, logout, signUp, newEntry, setNewEntry }}
+    >
       {children}
     </UserContext.Provider>
   );
