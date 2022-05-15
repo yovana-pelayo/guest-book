@@ -1,17 +1,17 @@
 import { Switch, Route } from 'react-router-dom';
 import PrivateRoute from './components/PrivateRoute';
-import Auth from './views/Auth';
-import Dashboard from './views/Dashboard';
+import EntryList from './views/EntryList';
 import Home from './views/Home';
+import Login from './views/Login';
 
 export default function App() {
   return (
     <Switch>
       <Route path="/login">
-        <Auth />
+        <Login />
       </Route>
-      <PrivateRoute path="/dashboard">
-        <Dashboard />
+      <PrivateRoute path="/entries">
+        <EntryList />
       </PrivateRoute>
       <PrivateRoute path="/">
         <Home />

@@ -3,8 +3,8 @@ import CreatEntry from '../components/CreateEntry';
 import { useUser } from '../context/UserContext';
 import { getEntries } from '../services/entries';
 
-export default function Dashboard() {
-  const { logout } = useUser();
+export default function EntryList() {
+  const { logout, user } = useUser();
   const [entries, setEntries] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -17,8 +17,8 @@ export default function Dashboard() {
   // to make shorter you can also do .then(setEntries)
   return (
     <>
-      <h1>Dashboard</h1>
-      <p>Dashboard displays list of entries</p>
+      <h1>Entries</h1>
+      <p>user: {user.email}</p>
       <button onClick={logout}>logout</button>
 
       {loading ? (
@@ -36,4 +36,5 @@ export default function Dashboard() {
     </>
   );
 }
-// we get our entries and load our entries
+// we are passing newEntries to the CreateEntry component so we are able to set the new object to our list of entries
+// oh wow... and on line 31 we are calling the list by id and content assigned to entry.

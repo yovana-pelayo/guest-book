@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import { useUser } from '../context/UserContext';
 
-export default function Auth() {
+export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
@@ -39,7 +39,7 @@ export default function Auth() {
 
   return (
     <>
-      <h1>Authentication page</h1>
+      <h1 aria-label="auth">Authentication page</h1>
       <form onSubmit={handleLogin}>
         <input
           type="email"
